@@ -1,4 +1,4 @@
-"""
+"""##全文引号开始
 print("Hello World!")
 
 ## python保留字
@@ -401,4 +401,41 @@ a | b # 集合a或b中包含的所有元素
 a & b # 集合a和b中都包含了的元素
 a ^ b # 不同时包含于a和b的元素
 
-"""#全文引号结束
+
+## 集合的基本操作
+# 添加元素
+thisset = set(("Baidu", "Alibaba", "Tencent"))
+thisset.add("Huawei")
+thisset
+
+# 还有一个方法，也可以添加元素，且参数可以是列表，元组，字典等
+thisset.update({3,6})
+thisset
+thisset.update([0,3],[3,6])
+thisset
+
+# 移除元素
+thisset.remove(3)
+
+# 此外还有一个方法也是移除集合中的元素，且如果元素不存在，不会发生错误。
+thisset.discard('6')
+thisset
+
+# 我们也可以设置随机删除集合中的一个元素
+x = thisset.pop()
+x
+# 多次执行测试结果都不一样
+
+# 计算集合元素个数
+len(thisset)
+
+# 清空集合
+thisset.clear()
+thisset
+
+# 判断元素是否在集合中存在
+thisset = set(("Baidu", "Alibaba", "Tencent", "Huawei"))
+"Huawei" in thisset
+"360" in thisset
+
+"""##全文引号结束
