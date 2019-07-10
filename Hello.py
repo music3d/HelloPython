@@ -438,4 +438,102 @@ thisset = set(("Baidu", "Alibaba", "Tencent", "Huawei"))
 "Huawei" in thisset
 "360" in thisset
 
+
+## Python编程第一步
+# Fibonacci series 斐波那契数列
+# 两个元素的总和确定了下一个数
+a, b = 0, 1
+while b < 10:
+    print(b)
+    a, b = b, a+b
+
+# end关键字
+# 关键字end可以用于将结果输出到同一行，或者在输出的末尾添加不同的字符
+a, b = 0, 1
+while b < 1000:
+    print(b, end = ',')
+    a, b = b, a+b
+
+
+## 迭代器
+# 两个基本方法：iter()和next()
+list = [1,2,3,4]
+it = iter(list)
+next(it)
+next(it)
+next(it)
+next(it)
+
+# 使用for语句遍历
+for x in it:
+    print(x)
+
+
+## 创建迭代器
+# 把一个类作为一个迭代器使用需要在类中实现两个方法 __iter__() 与 __next__() 。
+class MyNumbers:
+    def __iter__(self):
+        self.a = 1
+        return self
+    
+    def __next__(self):
+        x = self.a
+        self.a += 1
+        return x
+
+myclass = MyNumbers()
+myiter = iter(myclass)
+
+print(next(myiter))
+print(next(myiter))
+print(next(myiter))
+print(next(myiter))
+print(next(myiter))
+
+
+## StopIteration
+# StopIteration 异常用于标识迭代的完成，防止出现无限循环的情况，
+# 在 __next__() 方法中我们可以设置在完成指定循环次数后触发 StopIteration 异常来结束迭代。
+class MyNumbers:
+    def __iter__(self):
+        self.a = 1
+        return self
+    
+    def __next__(self):
+        if self.a <= 20:
+            x = self.a
+            self.a += 1
+            return x
+        else:
+            raise StopIteration
+
+myclass = MyNumbers()
+myiter = iter(myclass)
+
+for x in myiter:
+    print(x)
+
+
+## 生成器
+# 在调用生成器运行的过程中，每次遇到 yield 时函数会暂停并保存当前所有的运行信息，
+# 返回 yield 的值, 并在下一次执行 next() 方法时从当前位置继续运行。
+import sys
+
+def fibonacci(n):
+    a,b,counter = 0,1,0
+    while True:
+        if(counter>n):
+            return
+        yield a
+        a,b=b,a+b
+        counter+=1
+
+f = fibonacci(10)
+
+while True:
+    try:
+        print(next(f))
+    except StopIteration:
+        sys.exit()
+
 """##全文引号结束
