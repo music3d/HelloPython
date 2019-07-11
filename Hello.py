@@ -387,7 +387,8 @@ d # 将会报错
 
 ## Python3集合
 # 集合（set）是一个无序的不重复元素序列。
-# 可以使用大括号 { } 或者 set() 函数创建集合，注意：创建一个空集合必须用 set() 而不是 { }，因为 { } 是用来创建一个空字典。 
+# 可以使用大括号 { } 或者 set() 函数创建集合，
+# 注意：创建一个空集合必须用 set() 而不是 { }，因为 { } 是用来创建一个空字典。 
 basket = {'apple', 'orange', 'apple', 'pear', 'orange', 'banana'}
 basket # 会把set中的重复值去除
 
@@ -535,5 +536,109 @@ while True:
         print(next(f))
     except StopIteration:
         sys.exit()
+
+
+## Python函数
+# return [表达式] 结束函数，选择性地返回一个值给调用方。不带表达式的return相当于返回 None。
+# 默认情况下，参数值和参数名称是按函数声明中定义的顺序匹配起来的。
+def hello():
+    print("Hello World!")
+
+hello()
+
+# 带上参数变量
+def area(width, heigth):
+    return width*heigth
+
+def print_welcome(name):
+    print("Welcome", name)
+
+print_welcome("MJ")
+w = 4
+h = 5
+print(area(w,h))
+
+
+## 可更改(mutable)与不可更改(immutable)对象
+# 在 python 中，strings, tuples, 和 numbers 是不可更改的对象，而 list,dict 等则是可以修改的对象。
+# python 传不可变对象实例
+def ChangeInt(a):
+    a = 10
+b = 2
+ChangeInt(b)
+print(b) # 结果是2
+
+# 传可变对象实例
+def changeme(mylist):
+    '修改传入的列表'
+    mylist.append([1,2,3,4])
+    print("函数内取值：", mylist)
+    return
+
+# 调用changeme函数
+mylist = [10,20,30,40]
+changeme(mylist)
+print("函数外取值：", mylist)
+
+
+## 参数
+# 以下是调用函数时可使用的正式参数类型
+# 必须参数、关键字参数、默认参数、不定长参数
+
+# 必须参数
+# 必需参数须以正确的顺序传入函数。调用时的数量必须和声明时的一样。
+
+# 关键字参数
+# 关键字参数和函数调用关系紧密，函数调用使用关键字参数来确定传入的参数值。
+# 使用关键字参数允许函数调用时参数的顺序与声明时不一致，因为 Python 解释器能够用参数名匹配参数值。
+def printinfo( name, age ):
+    print ("名字: ", name)
+    print ("年龄: ", age)
+    return
+
+# 调用
+printinfo( age=50, name="MJ" )
+
+# 默认参数
+# 调用函数时，如果没有传递参数，则会使用默认参数。
+# 以下实例中如果没有传入 age 参数，则使用默认值：
+def printinfo(name,age=35):
+    print("名字：", name)
+    print("年龄：", age)
+    return
+
+# 调用
+printinfo(age=50, name="MJ")
+print("-------------------")
+printinfo(name="MJ")
+
+# 不定长参数
+# 你可能需要一个函数能处理比当初声明时更多的参数。
+# 这些参数叫做不定长参数，和上述 2 种参数不同，声明时不会命名。基本语法如下：
+# 加了星号 * 的参数会以元组(tuple)的形式导入，存放所有未命名的变量参数。
+def printinfo(arg1, *vartuple):
+    print("输出：")
+    print(arg1)
+    print(vartuple)
+
+# 调用
+printinfo(70,60,50)
+
+# 还有一种就是参数带两个星号 **基本语法如下：
+# 加了两个星号 ** 的参数会以字典的形式导入。
+def printinfo(arg1, **vardict):
+    print("输出：")
+    print(arg1)
+    print(vardict)
+
+# 调用
+printinfo(1,a=2,b=3)
+
+# 声明函数时，参数中星号 * 可以单独出现，例如:
+def f(a,b,*,c):
+    return a+b+c
+# 如果单独出现星号 * 后的参数必须用关键字传入。
+f(1,2,3) # 报错
+f(1,2,c=3) # 正常
 
 """##全文引号结束
