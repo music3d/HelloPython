@@ -641,4 +641,93 @@ def f(a,b,*,c):
 f(1,2,3) # 报错
 f(1,2,c=3) # 正常
 
+
+## 匿名函数
+# python 使用 lambda 来创建匿名函数。
+# lambda只是一个表达式，函数体比def简单很多。
+# lambda的主体是一个表达式，而不是一个代码块。仅仅能在lambda表达式中封装有限的逻辑进去。 
+# lambda 函数拥有自己的命名空间，且不能访问自己参数列表之外或全局命名空间里的参数。
+
+# 语法
+# lambda 函数的语法只包含一个语句
+sum = lambda arg1, arg2: arg1 + arg2
+
+# 调用
+sum(10,20)
+sum(20,20)
+
+
+## return语句
+# return [表达式] 语句用于退出函数，选择性地向调用方返回一个表达式。
+# 不带参数值的return语句返回None。
+def sum(arg1,arg2):
+    total = arg1 + arg2
+    print(total)
+    return total
+total = sum(10,20)
+print(total)
+
+
+## 变量作用域
+# Python 中，程序的变量并不是在哪个位置都可以访问的，访问权限决定于这个变量是在哪里赋值的。
+# Python的作用域一共有4种
+# L(Local)局部作用域
+# E(Enclosing)闭包函数外的函数中
+# G(Global)全局作用域
+# B(Built-in)内置作用域(内置函数所在模块的范围)
+# 以L –> E –> G –>B 的规则查找
+g_count = 0  # 全局作用域
+def outer():
+    o_count = 1  # 闭包函数外的函数中
+    def inner():
+        i_count = 2  # 局部作用域
+
+# 内置作用域是通过一个名为 builtin 的标准模块来实现的，
+# 但是这个变量名自身并没有放入内置作用域内，所以必须导入这个文件才能够使用它。
+# 在Python3.0中，可以使用以下的代码来查看到底预定义了哪些变量:
+import builtins
+dir(builtins)
+
+# Python 中只有模块（module），类（class）以及函数（def、lambda）才会引入新的作用域，
+# 其它的代码块（如 if/elif/else/、try/except、for/while等）是不会引入新的作用域的，
+# 也就是说这些语句内定义的变量，外部也可以访问
+if True:
+    msg = "Who am i"
+msg # 外部可以访问
+
+def test():
+    msg_inner = "Who am i"
+msg_inner # 报错
+
+# 全局变量和局部变量
+total = 0 # 全局变量
+def sum(arg1,arg2):
+    total = arg1+arg2 # total在这里是局部变量
+    print("函数内使局部变量：",total)
+    return total
+sum(10,20)
+print("函数外是全局变量：",total)
+
+# global和nonlocal关键字
+# 当内部作用域想修改外部作用域的变量时，就要用到global和nonlocal关键字了。
+num = 1
+def fun1():
+    global num # 需要使用 global 关键字声明
+    print(num)
+    num = 123
+    print(num)
+fun1()
+print(num)
+
+# 如果要修改嵌套作用域（enclosing 作用域，外层非全局作用域）中的变量则需要 nonlocal 关键字了
+def outer():
+    num = 10
+    def inner():
+        nonlocal num # nonlocal关键字声明
+        num = 100
+        print(num)
+    inner()
+    print(num)
+outer()
+
 """##全文引号结束
