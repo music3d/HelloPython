@@ -798,4 +798,94 @@ vec2 = [4, 3, -9]
 
 # 列表推导式可以使用复杂表达式或嵌套函数
 [str(round(355/113, i)) for i in range(1, 6)]
+
+# 嵌套列表解析
+# Python的列表可以嵌套
+matrix = [
+    [1,2,3,4],
+    [5,6,7,8],
+    [9,10,11,12]
+]
+matrix
+# 转置
+[[row[i] for row in matrix] for i in range(4)]
+
+[row[0] for row in matrix]
+[row[1] for row in matrix]
+
+# 转置也可以使用以下方法
+transposed = []
+for i in range(4):
+    transposed.append([row[i] for row in matrix])
+transposed
+
+# 转置另一种实现方法
+transposed = []
+for i in range(4):
+    transposed_row=[]
+    for row in matrix:
+        transposed_row.append(row[i])
+    transposed.append(transposed_row)
+transposed
+
+
+## del语句
+# 使用 del 语句可以从一个列表中依索引而不是值来删除一个元素。这与使用 pop() 返回一个值不同。
+# 可以用 del 语句从列表中删除一个切割，或清空整个列表（我们以前介绍的方法是给该切割赋一个空列表）。
+a = [-1, 1, 66.25, 333, 333, 1234.5]
+del a[0]
+a
+del a[2:4]
+a
+del a[:]
+a
+
+# del删除实体变量
+del a
+a # 报错
+
+
+## 元组和序列
+# 元组由若干逗号分隔的值组成
+t = 12345, 54321, 'hello'
+t[0]
+t
+u = t, (1,2,3,4,5)
+u
+# 元组在输出时总是有括号的，以便于正确表达嵌套结构。在输入时可能有或没有括号， 
+# 不过括号通常是必须的（如果元组是更大的表达式的一部分）。 
+
+
+## 字典补充
+# 字典推导可以用来创建任意键和值的表达式词典
+{x: x**2 for x in (2,4,6)}
+# 如果关键字只是简单的字符串，使用关键字参数指定键值对有时候更方便
+dict(sape=4139, guido=4127, jack=4098)
+
+
+## 遍历技巧
+# 在字典中遍历时，关键字和对应的值可以使用 items() 方法同时解读出来
+knights = {'galaahad': 'the pure', 'robin': 'the brave'}
+for k, v in knights.items():
+    print(k, v)
+
+# 在序列中遍历时，索引位置和对应值可以使用 enumerate() 函数同时得到
+for i, v in enumerate(['tic', 'tac', 'toe']):
+    print(i, v)
+
+# 同时遍历两个或更多的序列，可以使用 zip() 组合
+questions = ['name', 'quest', 'favorite color']
+answers = ['lancelot', 'the holy grail', 'blue']
+for q, a in zip(questions, answers): # 两个队列如果长度不一致，则按照最小的那个长度输出
+    print("What is your {0}? It is {1}.".format(q, a))
+
+# 要反向遍历一个序列，首先指定这个序列，然后调用 reversed() 函数
+for i in reversed(range(1,10,2)):
+    print(i)
+
+# 要按顺序遍历一个序列，使用 sorted() 函数返回一个已排序的序列，并不修改原值
+basket = ['apple', 'orange', 'apple', 'pear', 'orange', 'banana']
+for f in sorted(set(basket)): # 使用set可以去重
+    print(f)
+
 """##全文引号结束
