@@ -888,4 +888,60 @@ basket = ['apple', 'orange', 'apple', 'pear', 'orange', 'banana']
 for f in sorted(set(basket)): # 使用set可以去重
     print(f)
 
+
+## Python模块
+import sys
+ 
+print('命令行参数如下:')
+for i in sys.argv:
+   print(i)
+ 
+print('\n\nPython 路径为：', sys.path, '\n')
+
+# 如果你打算经常使用一个函数，你可以把它赋给一个本地的名称
+fib = fibo.fib
+fib(500)
+
+
+## __name__属性
+# 一个模块被另一个程序第一次引入时，其主程序将运行。
+# 如果我们想在模块被引入时，模块中的某一程序块不执行，
+# 我们可以用__name__属性来使该程序块仅在该模块自身运行时执行。 
+if __name__ == '__main__':
+    print("程序自身在运行")
+else:
+    print("我来自另一模块")
+
+# 运行输出如下：
+# $ python using_name.py
+# 程序自身在运行
+
+# $ python
+# >>> import using_name
+# 我来自另一模块
+
+# 说明： 每个模块都有一个__name__属性，当其值是'__main__'时，表明该模块自身在运行，否则是被引入。
+
+
+## dir()函数
+# 内置的函数 dir() 可以找到模块内定义的所有名称。以一个字符串列表的形式返回
+import sys
+dir(sys)
+# 如果没有给定参数，那么 dir() 函数会罗列出当前定义的所有名称
+dir()
+a = 5 # 建立一个新的变量‘a’
+dir()
+del a # 删除变量名a
+dir()
+
+
+## 标准模块
+# 应该注意到这有一个特别的模块 sys ，它内置在每一个 Python 解析器中。
+# 变量 sys.ps1 和 sys.ps2 定义了主提示符和副提示符所对应的字符串:
+import sys
+sys.ps1
+sys.ps2
+sys.ps1 = 'C>'
+print('Python!')
+
 """##全文引号结束
