@@ -944,4 +944,107 @@ sys.ps2
 sys.ps1 = 'C>'
 print('Python!')
 
+
+## 包
+# 包是一种管理 Python 模块命名空间的形式，采用"点模块名称"，
+# A.B表示包A中的子模块B。
+
+
+## Python3输入和输出
+# 输出格式美化
+# str()： 函数返回一个用户易读的表达形式。 
+# epr()： 产生一个解释器易读的表达形式。
+s = "Hello, Python"
+str(s)
+repr(s)
+str(1/7)
+x=10*3.25
+y=200*300
+s="x的值为："+repr(x)+", y的值为："+repr(y)+'...'
+print(s)
+# repr()函数可以转义字符串中的特殊字符
+hello = "hello, python\n"
+hellos = repr(hello)
+print(hellos)
+# repr()的参数可以是python的任何对象
+repr((x,y,('Baidu', 'Alibaba', 'Tencent')))
+
+# 这里有两种方式输出一个平方与立方的表: 
+for x in range(1,11):
+    print(repr(x).rjust(2), repr(x*x).rjust(3),end=' ')
+    print(repr(x*x*x).rjust(4))
+
+for x in range(1,11):
+    print(repr(x).rjust(2), repr(x*x).rjust(3), repr(x*x*x).rjust(4))
+
+for x in range(1,11):
+    print("{0:2d} {1:3d} {2:4d}".format(x,x*x,x*x*x))
+
+# 这个例子展示了字符串对象的 rjust() 方法, 它可以将字符串靠右, 并在左边填充空格。
+# 还有类似的方法, 如 ljust() 和 center()。 这些方法并不会写任何东西, 它们仅仅返回新的字符串。
+# 另一个方法 zfill(), 它会在数字的左边填充 0，如下所示：
+'12'.zfill(5)
+'-3.14'.zfill(7)
+'3.14159265359'.zfill(5)
+
+# str.format()的基本使用
+print('{}网址："{}"!'.format('百度一下','www.baidu.com'))
+
+# 括号及其里面的字符 (称作格式化字段) 将会被 format() 中的参数替换。
+# 在括号中的数字用于指向传入对象在 format() 中的位置
+print('{0}和{1}'.format('Baidu', 'Alibaba'))
+print('{1}和{0}'.format('Baidu', 'Alibaba'))
+
+# 如果在 format() 中使用了关键字参数, 那么它们的值会指向使用该名字的参数。
+print('{name}网址：{site}'.format(name='百度',site='www.baidu.com'))
+
+# 位置及关键字参数可以任意的结合: 
+print('站点列表 {0},{1},和{other}'.format('Baidu','Alibaba',other='Tencent'))
+
+# '!a' (使用 ascii()), '!s' (使用 str()) 和 '!r' (使用 repr()) 
+# 可以用于在格式化某个值之前对其进行转化:
+import math
+print('常量PI的值近似为： {}。'.format(math.pi))
+print('常量PI的值近似为： {!r}。'.format(math.pi))
+
+# 可选项':'和格式标识符可以跟着字段名。 这就允许对值进行更好的格式化。
+# 下面的例子将 Pi 保留到小数点后三位： 
+import math
+print('常量 PI 的值近似为 {:.3f}。'.format(math.pi))
+print('常量 PI 的值近似为 {0:.3f}。'.format(math.pi))
+print('常量 PI 的值近似为 {pi:.3f}。'.format(pi=math.pi))
+
+# 在':'后传入一个整数, 可以保证该域至少有这么多的宽度。 用于美化表格时很有用。 
+table = {'Baidu':1, 'Alibaba':2, 'Tencent':3}
+for name, number in table.items():
+    print('{0:10}==>{1:6d}'.format(name,number))
+
+#  如果你有一个很长的格式化字符串, 而你不想将它们分开, 
+# 那么在格式化时通过变量名而非位置会是很好的事情。
+# 最简单的就是传入一个字典, 然后使用方括号 '[]' 来访问键值 :
+table = {'Baidu':1, 'Alibaba':2, 'Tencent':3}
+print('Baidu:{0[Baidu]:d}; Alibaba:{0[Alibaba]:d}; Tencent:{0[Tencent]:d}'.format(table))
+# 也可以用多行字符串方式
+print('''Baidu:{0[Baidu]:d};
+Alibaba:{0[Alibaba]:d};
+Tencent:{0[Tencent]:d}'''.format(table))
+# 或者是这样
+print(
+'''Baidu:{0[Baidu]:d};
+Alibaba:{0[Alibaba]:d};
+Tencent:{0[Tencent]:d}'''
+.format(table))
+# 下面的方式会多出两行空白
+print(
+'''
+Baidu:{0[Baidu]:d};
+Alibaba:{0[Alibaba]:d};
+Tencent:{0[Tencent]:d}
+'''
+.format(table))
+
+# 也可以通过在 table 变量前使用 '**' 来实现相同的功能：
+table = {'Baidu':1, 'Alibaba':2, 'Tencent':3}
+print('Baidu: {Baidu:d}; Alibaba: {Alibaba:d}; Tencent: {Tencent:d}'.format(**table))
+
 """##全文引号结束
