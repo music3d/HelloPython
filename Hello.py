@@ -1,9 +1,12 @@
-"""##全文引号开始
+"""####全文引号开始
+### Python基础语法
 print("Hello World!")
+
 
 ## python保留字
 import keyword
 keyword.kwlist
+
 
 ## 注释
 #  第一个注释
@@ -15,7 +18,7 @@ print("Hello, Python!") # 第二个注释
 
 """
 """
-print("Hello, Python!")
+
 
 ## 行与缩进
 if True:
@@ -23,7 +26,7 @@ if True:
 else:
     print("False")
 
-'''
+
 ## import与from...import
 import sys
 print("命令行参数为：")
@@ -33,25 +36,25 @@ print("\n python 路径为",sys.path)
 
 from sys import argv,path
 print("path:" ,path) #  因为已经导入path成员，所以此处引用时不需要加sys.path
-'''
 
+
+
+### Python3基本数据类型
 ## isinstance和type的区别
-'''
-type()不会认为子类是一种父类类型。
-isinstance()会认为子类是一种父类类型。
-'''
+# type()不会认为子类是一种父类类型。
+# isinstance()会认为子类是一种父类类型。
 class A:
     pass
 class B(A):
     pass
-print(isinstance(A(),A))
-print(type(A())==A)
-print(isinstance(B(),A))
-print(type(B())==A)
+isinstance(A(),A)
+type(A())==A
+isinstance(B(),A)
+type(B())==A
 
 
 ## 逆向读取字符实例
-input = "I like runoob"
+input = "I like Python"
 inputWords = input.split(' ')
 inputWords
 inputWords = inputWords[-1::-1]
@@ -79,7 +82,7 @@ def reverseWords(input):
     return output 
   
 if __name__ == "__main__": 
-    input = 'I like runoob'
+    input = 'I like Python'
     rw = reverseWords(input) 
     print(rw)
 
@@ -142,6 +145,8 @@ oct(x) # 将一个整数转换为一个八进制字符串
 '''
 
 
+
+### Python3运算符
 ## Python身份运算符
 # 身份运算符用于比较两个对象的存储单元
 a = 20
@@ -176,7 +181,8 @@ and or not	                逻辑运算符
 '''
 
 
-## Python数字(Number)
+
+### Python数字(Number)
 # Python 数字数据类型用于存储数值。
 # 数据类型是不允许改变的,这就意味着如果改变数字数据类型的值，将重新分配内存空间。
 var1 = 1
@@ -285,6 +291,8 @@ math.pi
 math.e
 
 
+
+### Python3字符串
 ## Python访问字符串中的值
 # Python 不支持单字符类型，单字符在 Python 中也是作为一个字符串使用。
 # Python 访问子字符串，可以使用方括号来截取字符串，如下实例：
@@ -317,7 +325,11 @@ r'''
 '''
 
 
+
+### Python3列表
 ## Python列表脚本操作符
+# 列表对 + 和 * 的操作符与字符串相似。
+# + 号用于组合列表，* 号用于重复列表。
 len([1, 2, 3])
 [1, 2, 3] + [4, 5, 6]
 ['Hi!'] * 4
@@ -347,7 +359,8 @@ x[0]
 x[0][1]
 
 
-## Python3元组
+
+### Python3元组
 # Python 的元组与列表类似，不同之处在于元组的元素不能修改。
 # 元组使用小括号，列表使用方括号。
 tup1 = ('Baidu', 'Alibaba', 'Tencent')
@@ -365,19 +378,22 @@ tup1 = (10, )
 type(tup1) # 加上逗号，类型为元组
 
 
-## Python3字典
+
+### Python3字典
 # 字典是另一种可变容器模型，且可存储任意类型对象。
 d = {1:'a', 2:'b', 3:'c'}
 # 键必须是唯一的，但值则不必。
 # 值可以取任何数据类型，但键必须是不可变的，如字符串，数字或元组。
 d[1]
 
-# 修改字典
+
+## 修改字典
 d[2] = 'e'
 d[4] = 'd'
 d
 
-# 删除字典元素
+
+## 删除字典元素
 del d[1] # 删除键 1
 d.clear() # 清空字典
 d
@@ -385,7 +401,8 @@ del d # 删除字典
 d # 将会报错
 
 
-## Python3集合
+
+### Python3集合
 # 集合（set）是一个无序的不重复元素序列。
 # 可以使用大括号 { } 或者 set() 函数创建集合，
 # 注意：创建一个空集合必须用 set() 而不是 { }，因为 { } 是用来创建一个空字典。 
@@ -440,7 +457,8 @@ thisset = set(("Baidu", "Alibaba", "Tencent", "Huawei"))
 "360" in thisset
 
 
-## Python编程第一步
+
+### Python编程第一步
 # Fibonacci series 斐波那契数列
 # 两个元素的总和确定了下一个数
 a, b = 0, 1
@@ -456,6 +474,8 @@ while b < 1000:
     a, b = b, a+b
 
 
+
+### Python3迭代器与生成器
 ## 迭代器
 # 两个基本方法：iter()和next()
 list = [1,2,3,4]
@@ -538,7 +558,8 @@ while True:
         sys.exit()
 
 
-## Python函数
+
+### Python3函数
 # return [表达式] 结束函数，选择性地返回一个值给调用方。不带表达式的return相当于返回 None。
 # 默认情况下，参数值和参数名称是按函数声明中定义的顺序匹配起来的。
 def hello():
@@ -731,8 +752,9 @@ def outer():
 outer()
 
 
-## Python数据结构
-# 列表list
+
+### Python3数据结构
+## 列表list
 '''
 list.append(x) 	把一个元素添加到列表的结尾，相当于 a[len(a):] = [x]。
 list.extend(L) 	通过添加指定列表的所有元素来扩充列表，相当于 a[len(a):] = L。
@@ -750,7 +772,8 @@ list.reverse() 	倒排列表中的元素。
 list.copy() 	返回列表的浅复制，等于a[:]。 
 '''
 
-# 将列表当做堆栈使用
+
+## 将列表当做堆栈使用
 # 列表方法使得列表可以很方便的作为一个堆栈来使用，堆栈作为特定的数据结构，最先进入的元素最后一个被释放（后进先出）。
 # 用 append() 方法可以把一个元素添加到堆栈顶。用不指定索引的 pop() 方法可以把一个元素从堆栈顶释放出来。
 stack = [1,2,3]
@@ -763,7 +786,8 @@ stack.pop()
 stack.pop()
 stack
 
-# 将列表当做队列使用
+
+## 将列表当做队列使用
 # 也可以把列表当做队列用，只是在队列里第一加入的元素，第一个取出来；但是拿列表用作这样的目的效率不高。
 # 在列表的最后添加或者弹出元素速度快，然而在列表里插入或者从头部弹出速度却不快（因为所有其他的元素都得一个一个地移动）。 
 from collections import deque
@@ -775,7 +799,8 @@ queue.popleft()
 queue.popleft()
 queue
 
-# 列表推导式
+
+## 列表推导式
 vec = [1,2,3]
 [3*x for x in vec]
 
@@ -799,7 +824,8 @@ vec2 = [4, 3, -9]
 # 列表推导式可以使用复杂表达式或嵌套函数
 [str(round(355/113, i)) for i in range(1, 6)]
 
-# 嵌套列表解析
+
+## 嵌套列表解析
 # Python的列表可以嵌套
 matrix = [
     [1,2,3,4],
@@ -889,7 +915,8 @@ for f in sorted(set(basket)): # 使用set可以去重
     print(f)
 
 
-## Python模块
+
+### Python3模块
 import sys
  
 print('命令行参数如下:')
@@ -950,8 +977,9 @@ print('Python!')
 # A.B表示包A中的子模块B。
 
 
-## Python3输入和输出
-# 输出格式美化
+
+### Python3输入和输出
+## 输出格式美化
 # str()： 函数返回一个用户易读的表达形式。 
 # epr()： 产生一个解释器易读的表达形式。
 s = "Hello, Python"
@@ -1046,5 +1074,116 @@ Tencent:{0[Tencent]:d}
 # 也可以通过在 table 变量前使用 '**' 来实现相同的功能：
 table = {'Baidu':1, 'Alibaba':2, 'Tencent':3}
 print('Baidu: {Baidu:d}; Alibaba: {Alibaba:d}; Tencent: {Tencent:d}'.format(**table))
+
+
+## 旧式字符串格式化
+# % 操作符也可以实现字符串格式化。 它将左边的参数作为类似 sprintf() 式的格式化字符串, 
+# 而将右边的代入, 然后返回格式化后的字符串。
+import math
+print('%5.3f' % math.pi)
+# 因为 str.format() 比较新的函数， 大多数的 Python 代码仍然使用 % 操作符。
+# 但是因为这种旧式的格式化最终会从该语言中移除, 应该更多的使用 str.format()。
+
+
+## 读取键盘输入
+# input()函数可以接收一个Python表达式作为输入，并将运算结果返回。 
+strs = input("请输入：")
+print("你输入的内容是： ",strs)
+
+
+## 读和写文件
+# open() 将会返回一个 file 对象，基本语法格式如下: 
+# open(filename,mode)
+# filename：包含了你要访问的文件名称的字符串值。
+# mode：决定了打开文件的模式：只读，写入，追加等。所有可取值见如下的完全列表。
+# 这个参数是非强制的，默认文件访问模式为只读(r)。
+
+# 打开一个文件
+f = open("foo.txt",'w')
+f.write("Python 是一个非常好的语言。\n是的，的确非常好!!\n")
+# 关闭打开的文件
+f.close()
+# 第一个参数为要打开的文件名。
+# 第二个参数描述文件如何使用的字符。
+# mode 可以是 'r' 如果文件只读,
+# 'w' 只用于写 (如果存在同名文件则将被删除),
+# 和 'a' 用于追加文件内容; 所写的任何数据都会被自动增加到末尾。
+# 'r+' 同时用于读写。 mode 参数是可选的; 'r' 将是默认值。
+
+
+## 文件对象的方法
+# f.read()
+f = open("foo.txt",'r')
+strs = f.read()
+print(strs)
+f.close() # 也可以先关闭文件再打印strs
+
+# f.readline()
+# f.readline() 会从文件中读取单独的一行。换行符为 '\n'。
+# f.readline() 如果返回一个空字符串, 说明已经已经读取到最后一行。
+f = open("foo.txt",'r')
+strs = f.readline()
+strs += f.readline()
+print(strs)
+f.close()
+
+# f.readlines()
+# f.readlines() 将返回该文件中包含的所有行。 
+# 如果设置可选参数 sizehint, 则读取指定长度的字节, 
+# 并且将这些字节按行分割。
+f = open("foo.txt",'r')
+strs = f.readlines()
+print(strs)
+f.close()
+
+# 另一种方式是迭代一个文件对象然后读取每行: 
+f = open("foo.txt",'r')
+for line in f:
+    print(line, end='')
+f.close()
+
+# f.write()
+# f.write(string) 将 string 写入到文件中, 然后返回写入的字符数。 
+f = open("foo.txt", 'w')
+num = f.write("Python 是一个非常好的语言。\n是的，的确非常好!!\n")
+print(num)
+f.close()
+# 如果要写入一些不是字符串的东西, 那么将需要先进行转换: 
+f = open("foo1.txt", 'w')
+value = ('www.baidu.com',14)
+s = str(value)
+f.write(s)
+f.close()
+
+# f.tell()
+# f.tell() 返回文件对象当前所处的位置, 它是从文件开头开始算起的字节数。
+
+# f.seek()
+# 如果要改变文件当前的位置,可以使用f.seek(offset, from_what)函数。
+# from_what的值,如果是0表示开头,如果是1表示当前位置,2表示文件的结尾。
+# seek(x,0) ： 从起始位置即文件首行首字符开始移动 x 个字符
+# seek(x,1) ： 表示从当前位置往后移动x个字符
+# seek(-x,2)：表示从文件的结尾往前移动x个字符
+# from_what值为默认为0，即文件开头。
+f = open("foo1.txt", 'rb+')
+f.write(b'0123456789abcdef')
+f.seek(5) # 移动到文件的第六个字节
+f.read(1)
+f.seek(-3,2) # 移动到文件的倒数第三字节
+f.read(1)
+f.close()
+
+# f.close()
+# 在文本文件中 (那些打开文件的模式下没有 b 的), 只会相对于文件起始位置进行定位。
+# 当你处理完一个文件后, 调用 f.close() 来关闭文件并释放系统的资源，
+# 如果尝试再调用该文件，则会抛出异常。
+
+# 当处理一个文件对象时, 使用 with 关键字是非常好的方式。
+# 在结束后, 它会帮你正确的关闭文件。
+# 而且写起来也比 try - finally 语句块要简短:
+with open("foo.txt",'r') as f:
+    read_data = f.read()
+f.closed
+# 文件对象还有其他方法, 如 isatty() 和 trucate(), 但这些通常比较少用。
 
 """##全文引号结束
