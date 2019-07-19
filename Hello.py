@@ -1186,4 +1186,65 @@ with open("foo.txt",'r') as f:
 f.closed
 # 文件对象还有其他方法, 如 isatty() 和 trucate(), 但这些通常比较少用。
 
+
+## pickle模块
+# python的pickle模块实现了基本的数据序列和反序列化。
+# 通过pickle模块的序列化操作我们能够将程序中运行的对象信息保存到文件中去，永久存储。
+# 通过pickle模块的反序列化操作，我们能够从文件中创建上一次程序保存的对象。
+# 基本接口
+# pickle.dump(obj, file, [,protocol])
+
+# 序列化
+import pickle
+# 使用pickle模块将数据对象保存到文件
+data = {'a':[1,2.0,3,4+6j],
+        'b':('string',u'Unicode string'),
+        'c':None}
+selfref_list=[1,2,3]
+selfref_list.append(selfref_list) # 将selfref_list所在的指向加入到列表中
+output=open('data.pkl','wb')
+# Pickle dictionary using protocol 0.
+pickle.dump(data,output)
+# Pickle the list using the highest protocol available.
+pickle.dump(selfref_list,output,-1)
+output.close()
+
+# 反序列化
+import pprint,pickle
+# 使用pickle模块从文件中重构python对象
+pkl_file=open('data.pkl','rb')
+data = pickle.load(pkl_file)
+pprint.pprint(data)
+selfref_list = pickle.load(pkl_file)
+pprint.pprint(selfref_list)
+pkl_file.close()
+
+
+
+### Python3 File(文件)方法
+## open()方法
+# Python open() 方法用于打开一个文件，并返回文件对象，
+# 在对文件进行处理过程都需要使用到这个函数，
+# 如果该文件无法被打开，会抛出 OSError。
+# 注意：使用 open() 方法一定要保证关闭文件对象，即调用 close() 方法。
+# open() 函数常用形式是接收两个参数：文件名(file)和模式(mode)。
+# open(file, mode='r')
+# 完整的语法格式
+# open(
+# file, # 必须，文件路径（相对或者绝对路径）
+# mode='r',         # 可选，文件打开模式
+# buffering=-1,     # 设置缓冲
+# encoding=None,    # 一般使用utf8
+# errors=None,      # 报错级别
+# newline=None,     # 区分换行符
+# closefd=True,     # 传入的file参数类型
+# opener=None
+# )
+
+
+
+### Python3 OS文件/目录方法
+# os 模块提供了非常丰富的方法用来处理文件和目录。
+
+
 """##全文引号结束
