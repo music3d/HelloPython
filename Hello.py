@@ -1246,29 +1246,29 @@ pkl_file.close()
 ### Python3 OS文件/目录方法
 # os 模块提供了非常丰富的方法用来处理文件和目录。
 '''
-1 os.access(path, mode) 检验权限模式
-2 os.chdir(path) 改变当前工作目录
-3 os.chflags(path, flags) 设置路径的标记为数字标记。
-4 os.chmod(path, mode) 更改权限
-5 os.chown(path, uid, gid) 更改文件所有者
-6 os.chroot(path) 改变当前进程的根目录
-7 os.close(fd) 关闭文件描述符 fd
-8 os.closerange(fd_low, fd_high) 关闭所有文件描述符，从 fd_low (包含) 到 fd_high (不包含), 错误会忽略
-9 os.dup(fd) 复制文件描述符 fd
-10 os.dup2(fd, fd2) 将一个文件描述符 fd 复制到另一个 fd2
-11 os.fchdir(fd) 通过文件描述符改变当前工作目录
-12 os.fchmod(fd, mode) 改变一个文件的访问权限，该文件由参数fd指定，参数mode是Unix下的文件访问权限。
-13 os.fchown(fd, uid, gid) 修改一个文件的所有权，这个函数修改一个文件的用户ID和用户组ID，该文件由文件描述符fd指定。
-14 os.fdatasync(fd) 强制将文件写入磁盘，该文件由文件描述符fd指定，但是不强制更新文件的状态信息。
-15 os.fdopen(fd[, mode[, bufsize]]) 通过文件描述符 fd 创建一个文件对象，并返回这个文件对象
-16 os.fpathconf(fd, name) 返回一个打开的文件的系统配置信息。name为检索的系统配置的值，它也许是一个定义系统值的字符串，这些名字在很多标准中指定（POSIX.1, Unix 95, Unix 98, 和其它）。
-17 os.fstat(fd) 返回文件描述符fd的状态，像stat()。
-18 os.fstatvfs(fd) 返回包含文件描述符fd的文件的文件系统的信息，Python 3.3 相等于 statvfs()。
-19 os.fsync(fd) 强制将文件描述符为fd的文件写入硬盘。
-20 os.ftruncate(fd, length) 裁剪文件描述符fd对应的文件, 所以它最大不能超过文件大小。
-21 os.getcwd() 返回当前工作目录
-22 os.getcwdu() 返回一个当前工作目录的Unicode对象
-23 os.isatty(fd) 如果文件描述符fd是打开的，同时与tty(-like)设备相连，则返回true, 否则False。
+1 os.access(path, mode)检验权限模式
+2 os.chdir(path)改变当前工作目录
+3 os.chflags(path, flags)设置路径的标记为数字标记。
+4 os.chmod(path, mode)更改权限
+5 os.chown(path, uid, gid)更改文件所有者
+6 os.chroot(path)改变当前进程的根目录
+7 os.close(fd)关闭文件描述符 fd
+8 os.closerange(fd_low, fd_high)关闭所有文件描述符，从 fd_low (包含) 到 fd_high (不包含), 错误会忽略
+9 os.dup(fd)复制文件描述符 fd
+10 os.dup2(fd, fd2)将一个文件描述符 fd 复制到另一个 fd2
+11 os.fchdir(fd)通过文件描述符改变当前工作目录
+12 os.fchmod(fd, mode)改变一个文件的访问权限，该文件由参数fd指定，参数mode是Unix下的文件访问权限。
+13 os.fchown(fd, uid, gid)修改一个文件的所有权，这个函数修改一个文件的用户ID和用户组ID，该文件由文件描述符fd指定。
+14 os.fdatasync(fd)强制将文件写入磁盘，该文件由文件描述符fd指定，但是不强制更新文件的状态信息。
+15 os.fdopen(fd[, mode[, bufsize]])通过文件描述符 fd 创建一个文件对象，并返回这个文件对象
+16 os.fpathconf(fd, name)返回一个打开的文件的系统配置信息。name为检索的系统配置的值，它也许是一个定义系统值的字符串，这些名字在很多标准中指定（POSIX.1, Unix 95, Unix 98, 和其它）。
+17 os.fstat(fd)返回文件描述符fd的状态，像stat()。
+18 os.fstatvfs(fd)返回包含文件描述符fd的文件的文件系统的信息，Python 3.3 相等于 statvfs()。
+19 os.fsync(fd)强制将文件描述符为fd的文件写入硬盘。
+20 os.ftruncate(fd, length)裁剪文件描述符fd对应的文件, 所以它最大不能超过文件大小。
+21 os.getcwd()返回当前工作目录
+22 os.getcwdu()返回一个当前工作目录的Unicode对象
+23 os.isatty(fd)如果文件描述符fd是打开的，同时与tty(-like)设备相连，则返回true, 否则False。
 24 os.lchflags(path, flags)设置路径的标记为数字标记，类似 chflags()，但是没有软链接
 25 os.lchmod(path, mode)修改连接文件权限
 26 os.lchown(path, uid, gid)更改文件所有者，类似 chown，但是不追踪链接。
